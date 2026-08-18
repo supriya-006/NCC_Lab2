@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApiBySupriya")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aec42d2146087efe5d4f3308c3a7ea301cb4d3db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baf442560e27521e2ea8a8dce4072e53e3c70ef5")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiBySupriya")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiBySupriya")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
