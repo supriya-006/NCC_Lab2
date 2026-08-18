@@ -1,0 +1,114 @@
+@{
+    ViewData["Title"] = "My Razor Page";
+    string name = ViewData["Name"]?.ToString() ?? "Supriya Devkota";
+    int rollNo = Convert.ToInt32(ViewData["RollNo"] ?? 25);
+    int tableNumber = rollNo + 1;
+    DateTime currentTime = DateTime.Now;
+}
+
+<div class="container py-4">
+    <!-- Header Hero Banner -->
+    <div class="card shadow-lg border-0 rounded-4 mb-4 bg-gradient text-white" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);">
+        <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-white text-primary px-3 py-2 rounded-pill fw-semibold mb-2 shadow-sm">
+                        <i class="bi bi-clock-history me-1"></i> Razor View Feature
+                    </span>
+                    <h1 class="display-5 fw-bold mb-2">My Razor Page</h1>
+                    <p class="lead mb-0 text-white-50">Lab Work Demonstration - ASP.NET Core MVC</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-3 rounded-4 backdrop-blur border border-white border-opacity-20 text-center">
+                    <div class="text-uppercase small text-white-50 fw-bold tracking-wider">Current Server Time</div>
+                    <div class="fs-4 fw-bold font-monospace text-white mt-1">
+                        @currentTime.ToString("hh:mm:ss tt")
+                    </div>
+                    <div class="small text-white-50">@currentTime.ToString("dddd, MMMM dd, yyyy")</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Student Info Card -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-person-badge text-primary me-2"></i> Student Details
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="p-3 mb-3 rounded-3 bg-light border border-light-subtle">
+                        <div class="text-muted small fw-semibold">STUDENT NAME</div>
+                        <div class="fs-5 fw-bold text-indigo">@name</div>
+                    </div>
+
+                    <div class="p-3 mb-3 rounded-3 bg-light border border-light-subtle">
+                        <div class="text-muted small fw-semibold">ROLL NUMBER</div>
+                        <div class="fs-5 fw-bold text-indigo">@rollNo</div>
+                    </div>
+
+                    <div class="p-3 rounded-3 bg-primary bg-opacity-10 border border-primary border-opacity-25">
+                        <div class="text-primary small fw-bold">CALCULATED MULTIPLICAND</div>
+                        <div class="d-flex align-items-center justify-content-between mt-1">
+                            <span class="text-secondary fs-6">Roll No (@rollNo) + 1</span>
+                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Table of @tableNumber</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multiplication Table Card -->
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex justify-content-between align-items-center">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-calculator text-primary me-2"></i> Multiplication Table of @tableNumber
+                    </h3>
+                    <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill">
+                        1 to 10
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="table-responsive rounded-3 border">
+                        <table class="table table-hover align-middle mb-0 text-center">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col" class="py-3">Multiplier</th>
+                                    <th scope="col" class="py-3">Operation</th>
+                                    <th scope="col" class="py-3">Multiplier Factor</th>
+                                    <th scope="col" class="py-3">Equals</th>
+                                    <th scope="col" class="py-3 text-end pe-4">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 1; i <= 10; i++)
+                                {
+                                    int result = tableNumber * i;
+                                    <tr>
+                                        <td class="fw-bold text-indigo">@tableNumber</td>
+                                        <td class="text-muted"><i class="bi bi-x-lg small"></i></td>
+                                        <td class="fw-semibold">@i</td>
+                                        <td class="text-muted">=</td>
+                                        <td class="text-end pe-4">
+                                            <span class="badge bg-indigo-subtle text-indigo fs-6 px-3 py-1 fw-bold rounded-2">
+                                                @result
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-indigo { color: #4f46e5; }
+    .bg-indigo-subtle { background-color: #eef2ff; }
+</style>

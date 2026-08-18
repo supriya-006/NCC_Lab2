@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Title": "C# 12 and .NET 8 – Modern Cross-Platform Development",
+    "Author": "Mark J. Price",
+    "Category": "Programming",
+    "Price": 49.99
+  },
+  {
+    "Id": 2,
+    "Title": "ASP.NET Core in Action",
+    "Author": "Andrew Lock",
+    "Category": "Web Development",
+    "Price": 59.99
+  },
+  {
+    "Id": 3,
+    "Title": "Clean Code",
+    "Author": "Robert C. Martin",
+    "Category": "Software Engineering",
+    "Price": 42.50
+  }
+]

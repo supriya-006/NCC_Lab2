@@ -1,0 +1,15 @@
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/bin/Debug/net10.0/WebApp1BySupriya
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/bin/Debug/net10.0/WebApp1BySupriya.deps.json
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/bin/Debug/net10.0/WebApp1BySupriya.runtimeconfig.json
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/bin/Debug/net10.0/WebApp1BySupriya.dll
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/bin/Debug/net10.0/WebApp1BySupriya.pdb
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.GeneratedMSBuildEditorConfig.editorconfig
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.AssemblyInfoInputs.cache
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.AssemblyInfo.cs
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.csproj.CoreCompileInputs.cache
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.sourcelink.json
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.dll
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/refint/WebApp1BySupriya.dll
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.pdb
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/WebApp1BySupriya.genruntimeconfig.cache
+/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp1BySupriya/obj/Debug/net10.0/ref/WebApp1BySupriya.dll

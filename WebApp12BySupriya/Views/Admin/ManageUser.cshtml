@@ -1,0 +1,168 @@
+@using Microsoft.AspNetCore.Identity
+
+@{
+    var user = (IdentityUser)ViewBag.User;
+    var roles = (IList<string>)ViewBag.Roles;
+    var claims =
+        (IList<System.Security.Claims.Claim>)ViewBag.Claims;
+    var allRoles =
+        (IEnumerable<IdentityRole>)ViewBag.AllRoles;
+}
+
+<h1>Manage User</h1>
+
+<h3>
+    User: @user.Email
+</h3>
+
+<hr />
+
+<h3>Assign Role</h3>
+
+<form method="post"
+      action="/Admin/AddRole">
+
+    <input type="hidden"
+           name="userId"
+           value="@user.Id" />
+
+    <select name="roleName"
+            class="form-control">
+
+        @foreach (var role in allRoles)
+        {
+            <option value="@role.Name">
+                @role.Name
+            </option>
+        }
+
+    </select>
+
+    <br />
+
+    <button class="btn btn-primary">
+        Assign Role
+    </button>
+
+</form>
+
+<hr />
+
+<h3>Current Roles</h3>
+
+<table class="table">
+
+@foreach (var role in roles)
+{
+    <tr>
+
+        <td>
+            @role
+        </td>
+
+        <td>
+
+            <form method="post"
+                  action="/Admin/RemoveRole">
+
+                <input type="hidden"
+                       name="userId"
+                       value="@user.Id" />
+
+                <input type="hidden"
+                       name="roleName"
+                       value="@role" />
+
+                <button class="btn btn-danger">
+                    Revoke
+                </button>
+
+            </form>
+
+        </td>
+
+    </tr>
+}
+
+</table>
+
+<hr />
+
+<h3>Add Claim</h3>
+
+<form method="post"
+      action="/Admin/AddClaim">
+
+    <input type="hidden"
+           name="userId"
+           value="@user.Id" />
+
+    <input type="text"
+           name="claimType"
+           class="form-control"
+           placeholder="Claim Type"
+           required />
+
+    <br />
+
+    <input type="text"
+           name="claimValue"
+           class="form-control"
+           placeholder="Claim Value"
+           required />
+
+    <br />
+
+    <button class="btn btn-success">
+        Add Claim
+    </button>
+
+</form>
+
+<hr />
+
+<h3>Current Claims</h3>
+
+<table class="table table-bordered">
+
+@foreach (var claim in claims)
+{
+    <tr>
+
+        <td>
+            @claim.Type
+        </td>
+
+        <td>
+            @claim.Value
+        </td>
+
+        <td>
+
+            <form method="post"
+                  action="/Admin/RemoveClaim">
+
+                <input type="hidden"
+                       name="userId"
+                       value="@user.Id" />
+
+                <input type="hidden"
+                       name="claimType"
+                       value="@claim.Type" />
+
+                <input type="hidden"
+                       name="claimValue"
+                       value="@claim.Value" />
+
+                <button class="btn btn-danger">
+                    Remove
+                </button>
+
+            </form>
+
+        </td>
+
+    </tr>
+}
+
+</table>

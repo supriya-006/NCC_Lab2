@@ -1,0 +1,82 @@
+@model WebApp2BySupriya.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container py-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show rounded-4 shadow-sm border-0 mb-4 p-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill fs-4 me-3 text-success"></i>
+            <div>
+                <strong>Success!</strong> @TempData["SuccessMessage"]
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-gradient text-white p-4" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="badge bg-white text-success fw-bold px-3 py-1 rounded-pill mb-2">
+                                Verified Record
+                            </span>
+                            <h2 class="h3 fw-bold mb-0">Student Details Page</h2>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-circle text-white">
+                            <i class="bi bi-card-heading fs-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <span class="text-muted small fw-semibold d-block">STUDENT ID</span>
+                                <span class="fs-4 fw-bold text-dark">#@Model.StdID</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <span class="text-muted small fw-semibold d-block">FULL NAME</span>
+                                <span class="fs-4 fw-bold text-success">@Model.Name</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <span class="text-muted small fw-semibold d-block">FACULTY / STREAM</span>
+                                <span class="fs-5 fw-bold text-dark">@Model.Faculty</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <span class="text-muted small fw-semibold d-block">EMAIL ADDRESS</span>
+                                <span class="fs-5 fw-bold text-dark">@Model.Email</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <span class="text-muted small fw-semibold d-block">PERMANENT ADDRESS</span>
+                                <span class="fs-5 fw-bold text-dark">@Model.Address</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-5 pt-3 border-top">
+                        <a asp-action="Create" class="btn btn-outline-success btn-lg px-4 rounded-3 fw-bold">
+                            <i class="bi bi-plus-circle me-1"></i> Add Another Student
+                        </a>
+                        <a asp-action="MyRazorPage" class="btn btn-primary btn-lg px-4 rounded-3 fw-bold">
+                            <i class="bi bi-file-earmark-code me-1"></i> Go to MyRazorPage
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

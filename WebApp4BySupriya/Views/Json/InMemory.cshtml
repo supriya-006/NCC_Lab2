@@ -1,0 +1,98 @@
+@model IEnumerable<WebApp4BySupriya.Models.Book>
+
+@{
+    ViewData["Title"] = "JSON Parsing Without File - WebApp4BySupriya";
+}
+
+<div class="container py-4">
+    <!-- Hero Banner -->
+    <div class="card shadow-lg border-0 rounded-4 mb-4 text-white" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+        <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-white text-primary px-3 py-2 rounded-pill fw-semibold mb-2 shadow-sm">
+                        Lab Task 21 - In-Memory JSON
+                    </span>
+                    <h1 class="display-5 fw-bold mb-2">JSON Parsing Without File</h1>
+                    <p class="lead text-white-50 mb-0">Demonstrating System.Text.Json Serialization & Deserialization on In-Memory Data</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-3 rounded-circle text-white">
+                    <i class="bi bi-filetype-json fs-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Raw In-Memory JSON String Input -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-code-slash text-info me-2"></i> 1. Raw In-Memory JSON String
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted small">Input string passed to <code>JsonSerializer.Deserialize&lt;List&lt;Book&gt;&gt;()</code>:</p>
+                    <pre class="bg-dark text-success p-3 rounded-3 shadow-inner font-monospace small mb-0" style="max-height: 280px; overflow-y: auto;">@ViewBag.RawJson</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Serialized Output JSON -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-box-arrow-right text-info me-2"></i> 2. Serialized Output JSON
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted small">C# object serialized back to JSON using <code>JsonSerializer.Serialize()</code>:</p>
+                    <pre class="bg-dark text-warning p-3 rounded-3 shadow-inner font-monospace small mb-0" style="max-height: 280px; overflow-y: auto;">@ViewBag.SerializedJson</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deserialized C# Model Objects Table -->
+        <div class="col-12">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex justify-content-between align-items-center">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-table text-primary me-2"></i> 3. Parsed C# Model Objects (Deserialized)
+                    </h3>
+                    <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill">
+                        Parsed Successfully
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="table-responsive rounded-3 border">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-bold">#@item.Id</td>
+                                        <td class="fw-semibold text-primary">@item.Title</td>
+                                        <td>@item.Author</td>
+                                        <td><span class="badge bg-secondary bg-opacity-10 text-secondary px-3 py-1 rounded-pill">@item.Category</span></td>
+                                        <td class="fw-bold text-success">$@item.Price.ToString("F2")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

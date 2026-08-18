@@ -1,0 +1,15 @@
+@model WebApp5BySupriya.Models.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<h1>Delete Student</h1>
+
+<div class="alert alert-danger">Are you sure you want to delete <strong>@Model.Name</strong>?</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger" type="submit">Delete</button>
+    <a class="btn btn-secondary" href="/Student">Cancel</a>
+</form>

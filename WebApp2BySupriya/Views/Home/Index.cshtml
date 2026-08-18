@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Home - WebApp2BySupriya";
+}
+
+<div class="container py-5 text-center">
+    <div class="p-5 mb-4 bg-light rounded-4 border shadow-sm">
+        <span class="badge bg-primary px-3 py-2 rounded-pill fs-6 mb-3">ASP.NET Core MVC Application</span>
+        <h1 class="display-4 fw-bold text-dark mb-3">WebApp2BySupriya</h1>
+        <p class="lead col-lg-8 mx-auto text-secondary mb-4">
+            Net Centric Computing Lab Work 2 project featuring dynamic Razor views, custom models, model validation with error messaging, and student record creation.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a asp-controller="Student" asp-action="MyRazorPage" class="btn btn-primary btn-lg px-4 fw-bold shadow-sm">
+                <i class="bi bi-file-earmark-code me-2"></i> Visit MyRazorPage
+            </a>
+            <a asp-controller="Student" asp-action="Create" class="btn btn-outline-dark btn-lg px-4 fw-bold">
+                <i class="bi bi-person-plus me-2"></i> Create Student Record
+            </a>
+        </div>
+    </div>
+</div>

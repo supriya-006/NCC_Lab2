@@ -1,0 +1,77 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityRole>
+
+<h1>Manage Roles</h1>
+
+<form method="post"
+      action="/Admin/CreateRole">
+
+    <div class="mb-3">
+
+        <label>Role Name</label>
+
+        <input type="text"
+               name="roleName"
+               class="form-control"
+               placeholder="Enter role name"
+               required />
+
+    </div>
+
+    <button class="btn btn-primary">
+        Add Role
+    </button>
+
+</form>
+
+<hr />
+
+<h3>Existing Roles</h3>
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    @foreach (var role in Model)
+    {
+        <tr>
+
+            <td>
+                @role.Name
+            </td>
+
+            <td>
+
+                @if (role.Name != "Admin")
+                {
+                    <form method="post"
+                          action="/Admin/DeleteRole">
+
+                        <input type="hidden"
+                               name="roleId"
+                               value="@role.Id" />
+
+                        <button class="btn btn-danger">
+                            Delete
+                        </button>
+
+                    </form>
+                }
+
+            </td>
+
+        </tr>
+    }
+
+    </tbody>
+
+</table>

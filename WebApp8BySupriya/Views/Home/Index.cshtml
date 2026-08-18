@@ -1,0 +1,10 @@
+@{
+    ViewData["Title"] = "Server-side State Demo";
+}
+<h1>Server-side State Demo</h1>
+<ul>
+    <li>Session: @ViewData["Session"]</li>
+    <li>HttpContext.Items: @ViewData["Item"]</li>
+    <li>TempData: @ViewData["Temp"]</li>
+    <li>MemoryCache: @ViewData["Cache"]</li>
+</ul>

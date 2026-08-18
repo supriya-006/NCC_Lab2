@@ -1,0 +1,17 @@
+@model WebApp5BySupriya.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>Student Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+        <p class="card-text"><strong>Faculty:</strong> @Model.Faculty</p>
+        <p class="card-text"><strong>GPA:</strong> @Model.Gpa.ToString("F2")</p>
+        <a class="btn btn-secondary" href="/Student">Back</a>
+    </div>
+</div>

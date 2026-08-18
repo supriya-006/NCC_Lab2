@@ -1,0 +1,28 @@
+@model WebApp5BySupriya.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<h1>Create Student</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Faculty</label>
+        <input asp-for="Faculty" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">GPA</label>
+        <input asp-for="Gpa" class="form-control" />
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary" href="/Student">Cancel</a>
+</form>

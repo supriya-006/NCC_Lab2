@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "XSS Demonstration";
+}
+
+<h2>XSS Demonstration</h2>
+
+<form method="post">
+    <label>Enter Message:</label>
+    <input type="text" name="message" />
+    <button type="submit">Submit</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <h3>Output:</h3>
+    <p>@ViewBag.Message</p>
+}

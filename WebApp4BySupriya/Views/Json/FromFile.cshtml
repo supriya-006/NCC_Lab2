@@ -1,0 +1,132 @@
+@model IEnumerable<WebApp4BySupriya.Models.Book>
+
+@{
+    ViewData["Title"] = "JSON File Read & Write - WebApp4BySupriya";
+}
+
+<div class="container py-4">
+    <!-- Success Alert -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show rounded-4 shadow-sm border-0 mb-4 p-3 d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill fs-4 me-3 text-success"></i>
+            <div>
+                <strong>File Updated!</strong> @TempData["SuccessMessage"]
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Hero Header -->
+    <div class="card shadow-lg border-0 rounded-4 mb-4 text-white" style="background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);">
+        <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-white text-teal px-3 py-2 rounded-pill fw-semibold mb-2 shadow-sm" style="color: #0d9488;">
+                        Lab Task 21 - JSON File Operations
+                    </span>
+                    <h1 class="display-5 fw-bold mb-2">JSON Read & Write with File</h1>
+                    <p class="lead text-white-50 mb-0">Read from <code>wwwroot/data/books.json</code> and Write Updated Records to File</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-3 rounded-circle text-white">
+                    <i class="bi bi-folder-symlink fs-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Form to Add Book and Write to JSON File -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-plus-circle text-teal me-2" style="color: #0d9488;"></i> Add Record & Save to File
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="FromFile" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Book Title</label>
+                            <input name="Title" class="form-control" placeholder="e.g. Design Patterns in C#" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Author Name</label>
+                            <input name="Author" class="form-control" placeholder="e.g. Gang of Four" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Category</label>
+                            <input name="Category" class="form-control" placeholder="e.g. Software Architecture" required />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Price ($)</label>
+                            <input name="Price" type="number" step="0.01" class="form-control" placeholder="e.g. 39.99" required />
+                        </div>
+
+                        <button type="submit" class="btn text-white w-100 fw-bold py-2 shadow-sm" style="background-color: #0d9488;">
+                            <i class="bi bi-save me-1"></i> Serialize & Save to books.json
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raw File Content Output -->
+        <div class="col-lg-7">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex justify-content-between align-items-center">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-file-earmark-code text-teal me-2" style="color: #0d9488;"></i> Live Content of books.json
+                    </h3>
+                    <span class="badge bg-dark text-white font-monospace px-3 py-1">wwwroot/data/books.json</span>
+                </div>
+                <div class="card-body p-4">
+                    <pre class="bg-dark text-info p-3 rounded-3 shadow-inner font-monospace small mb-0" style="max-height: 320px; overflow-y: auto;">@ViewBag.RawFileContent</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parsed Data Table from File -->
+        <div class="col-12">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+                    <h3 class="h5 fw-bold text-dark mb-0">
+                        <i class="bi bi-journal-text text-primary me-2"></i> Deserialized Records Read from File
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="table-responsive rounded-3 border">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var book in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-bold">#@book.Id</td>
+                                        <td class="fw-semibold text-teal" style="color: #0d9488;">@book.Title</td>
+                                        <td>@book.Author</td>
+                                        <td><span class="badge bg-light text-dark border px-3 py-1 rounded-pill">@book.Category</span></td>
+                                        <td class="fw-bold text-success">$@book.Price.ToString("F2")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Client-side State Demo";
+}
+<h1>Client-side State Demo</h1>
+<form method="get">
+    <label>Query string (q): <input name="q" /></label>
+    <button type="submit">Send Query</button>
+</form>
+
+<p>Query value: @ViewData["Query"]</p>
+
+<form method="post" asp-action="SetCookie">
+    <label>Cookie value: <input name="value" /></label>
+    <button type="submit">Set Cookie</button>
+</form>
+<p>Cookie value: @ViewData["Cookie"]</p>
+
+<form method="post" asp-action="Index" asp-controller="Home">
+    <input type="hidden" name="message" value="@(ViewData["HiddenValue"])" />
+    <button type="submit">Submit Hidden Field</button>
+</form>
+<p>Hidden field value: @ViewData["HiddenValue"]</p>

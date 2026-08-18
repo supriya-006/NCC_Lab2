@@ -1,0 +1,143 @@
+@{
+    ViewData["Title"] = "Dependency Injection Lifetimes - WebApp3BySupriya";
+
+    var t1 = ViewBag.Transient1?.ToString();
+    var t2 = ViewBag.Transient2?.ToString();
+    var t3 = ViewBag.TransientServiceInjected?.ToString();
+
+    var s1 = ViewBag.Scoped1?.ToString();
+    var s2 = ViewBag.Scoped2?.ToString();
+    var s3 = ViewBag.ScopedServiceInjected?.ToString();
+
+    var single1 = ViewBag.Singleton1?.ToString();
+    var single2 = ViewBag.Singleton2?.ToString();
+    var single3 = ViewBag.SingletonServiceInjected?.ToString();
+}
+
+<div class="container py-4">
+    <!-- Hero Header -->
+    <div class="card shadow-lg border-0 rounded-4 mb-4 text-white" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+        <div class="card-body p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-primary px-3 py-2 rounded-pill fw-semibold mb-2">
+                        Lab Task 20 - Dependency Injection
+                    </span>
+                    <h1 class="display-5 fw-bold mb-2">WebApp3BySupriya</h1>
+                    <p class="lead text-slate-300 mb-0">Illustrating AddTransient vs AddScoped vs AddSingleton Service Lifetimes</p>
+                </div>
+                <div>
+                    <a href="javascript:location.reload()" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold shadow-sm">
+                        <i class="bi bi-arrow-clockwise me-1"></i> Refresh Request (Test Lifetime Behavior)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Matrix Card -->
+    <div class="card shadow-sm border-0 rounded-4 mb-4">
+        <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+            <h3 class="h5 fw-bold text-dark mb-0">
+                <i class="bi bi-cpu text-primary me-2"></i> Service Instance Operation GUIDs (Current Request)
+            </h3>
+        </div>
+        <div class="card-body p-4">
+            <div class="table-responsive rounded-3 border">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Lifetime Strategy</th>
+                            <th>Direct Injection #1</th>
+                            <th>Direct Injection #2</th>
+                            <th>Service Injected #3</th>
+                            <th>Scope Behavior Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Transient Row -->
+                        <tr class="table-warning border-start border-4 border-warning">
+                            <td class="fw-bold">
+                                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">AddTransient</span>
+                            </td>
+                            <td class="font-monospace small">@t1</td>
+                            <td class="font-monospace small">@t2</td>
+                            <td class="font-monospace small">@t3</td>
+                            <td>
+                                <span class="badge bg-danger text-white px-2 py-1">New instance every time</span>
+                            </td>
+                        </tr>
+
+                        <!-- Scoped Row -->
+                        <tr class="table-info border-start border-4 border-info">
+                            <td class="fw-bold">
+                                <span class="badge bg-info text-dark px-3 py-2 rounded-pill">AddScoped</span>
+                            </td>
+                            <td class="font-monospace small fw-bold text-primary">@s1</td>
+                            <td class="font-monospace small fw-bold text-primary">@s2</td>
+                            <td class="font-monospace small fw-bold text-primary">@s3</td>
+                            <td>
+                                <span class="badge bg-success text-white px-2 py-1">Same instance per request</span>
+                            </td>
+                        </tr>
+
+                        <!-- Singleton Row -->
+                        <tr class="table-success border-start border-4 border-success">
+                            <td class="fw-bold">
+                                <span class="badge bg-success text-white px-3 py-2 rounded-pill">AddSingleton</span>
+                            </td>
+                            <td class="font-monospace small fw-bold text-success">@single1</td>
+                            <td class="font-monospace small fw-bold text-success">@single2</td>
+                            <td class="font-monospace small fw-bold text-success">@single3</td>
+                            <td>
+                                <span class="badge bg-dark text-white px-2 py-1">Same instance across all requests</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Explanatory Info Cards -->
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card border-warning border-2 h-100 rounded-4 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="h5 fw-bold text-warning-emphasis mb-3">
+                        <i class="bi bi-lightning-charge me-2"></i> AddTransient
+                    </h4>
+                    <p class="text-secondary small mb-0">
+                        Transient lifetime services are created <strong>each time they are requested</strong> from the service container. Notice how all three GUIDs above are completely unique even within the same HTTP request.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-info border-2 h-100 rounded-4 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="h5 fw-bold text-info-emphasis mb-3">
+                        <i class="bi bi-arrows-expand me-2"></i> AddScoped
+                    </h4>
+                    <p class="text-secondary small mb-0">
+                        Scoped lifetime services are created <strong>once per client request (connection)</strong>. All three GUIDs match during this request, but clicking <em>Refresh Request</em> will generate a new set of matching GUIDs.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-success border-2 h-100 rounded-4 shadow-sm">
+                <div class="card-body p-4">
+                    <h4 class="h5 fw-bold text-success-emphasis mb-3">
+                        <i class="bi bi-infinity me-2"></i> AddSingleton
+                    </h4>
+                    <p class="text-secondary small mb-0">
+                        Singleton lifetime services are created <strong>the first time they are requested</strong> and remain the same for every subsequent request. Notice how these GUIDs stay identical even when you refresh the page!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

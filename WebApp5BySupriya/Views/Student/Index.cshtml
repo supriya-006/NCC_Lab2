@@ -1,0 +1,41 @@
+@model IEnumerable<WebApp5BySupriya.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a class="btn btn-primary" href="/Student/Create">Add New Student</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Faculty</th>
+            <th>GPA</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.Email</td>
+            <td>@s.Faculty</td>
+            <td>@s.Gpa.ToString("F2")</td>
+            <td>
+                <a class="btn btn-sm btn-info" href="/Student/Details/@s.Id">Details</a>
+                <a class="btn btn-sm btn-warning" href="/Student/Edit/@s.Id">Edit</a>
+                <a class="btn btn-sm btn-danger" href="/Student/Delete/@s.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
