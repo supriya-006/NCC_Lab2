@@ -47,5 +47,10 @@ namespace WebApp3BySupriya.Controllers
 
             return View();
         }
+
+        public IActionResult Signup()
+        {
+            return View();
+        }
     }
 }

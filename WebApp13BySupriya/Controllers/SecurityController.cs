@@ -4,6 +4,7 @@ namespace WebApp13BySupriya.Controllers
 {
     public class SecurityController : Controller
     {
+        // XSS code
         public IActionResult Xss()
         {
             return View();
@@ -14,6 +15,19 @@ namespace WebApp13BySupriya.Controllers
         {
             ViewBag.Message = message;
             return View();
+        }
+
+        // ADD THESE
+        public IActionResult Csrf()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ChangeName(string name)
+        {
+            ViewBag.Message = "Name changed to: " + name;
+            return View("Csrf");
         }
     }
 }

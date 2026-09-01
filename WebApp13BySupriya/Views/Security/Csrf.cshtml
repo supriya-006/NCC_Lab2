@@ -1,12 +1,8 @@
-@{
-    ViewData["Title"] = "CSRF Protection";
-}
-
-<h2>CSRF Protection</h2>
-
 <form asp-controller="Security"
       asp-action="ChangeName"
       method="post">
+
+    @Html.AntiForgeryToken()
 
     <label>New Name:</label>
     <input type="text" name="name" />

@@ -1,7 +1,5 @@
 is_global = true
 build_property.TargetFramework = net10.0
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v10.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
@@ -14,13 +12,11 @@ build_property.RootNamespace = WebApp2BySupriya
 build_property.ProjectDir = /home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp2BySupriya/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.RazorLangVersion = 9.0
+build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = /home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp2BySupriya
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 10.0
-build_property.EnableCodeStyleSeverity = 
 
 [/home/supriya-devkota/Desktop/SixSem/C sharp/SupriyaNCCLab2/WebApp2BySupriya/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=

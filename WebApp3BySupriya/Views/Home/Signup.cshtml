@@ -1,0 +1,130 @@
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-dark text-white p-4">
+                    <h2 class="mb-0 fw-bold">Sign Up Form</h2>
+                    <p class="mb-0 mt-2 text-white-50">Supriya | Roll No: 17</p>
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    <form id="signupForm" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label fw-semibold">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name">
+                                <div class="invalid-feedback">Please enter your full name.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label fw-semibold">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="password" class="form-label fw-semibold">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter a password">
+                                <div class="invalid-feedback">Password must be at least 6 characters long.</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="confirmPassword" class="form-label fw-semibold">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
+                                <div class="invalid-feedback">Passwords must match.</div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label fw-semibold">Address</label>
+                                <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
+                                <div class="invalid-feedback">Please enter your address.</div>
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-end gap-2 pt-3">
+                                <button type="reset" class="btn btn-outline-secondary px-4">Reset</button>
+                                <button type="submit" class="btn btn-primary px-4">Register</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="successMessage" class="alert alert-success mt-4 d-none" role="alert">
+                        Registration successful! Your account has been created.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const form = $('#signupForm');
+            const successBox = $('#successMessage');
+
+            function validateField(field) {
+                const value = $.trim(field.val());
+                const name = field.attr('name');
+                let valid = true;
+
+                field.removeClass('is-invalid is-valid');
+
+                if (name === 'fullName') {
+                    valid = value.length > 0;
+                }
+
+                if (name === 'email') {
+                    const atIndex = value.indexOf(String.fromCharCode(64));
+                    const dotIndex = value.lastIndexOf('.');
+                    valid = atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < value.length - 1;
+                }
+
+                if (name === 'password') {
+                    valid = value.length >= 6;
+                }
+
+                if (name === 'confirmPassword') {
+                    valid = value.length >= 6 && value === $('#password').val();
+                }
+
+                if (name === 'address') {
+                    valid = value.length > 0;
+                }
+
+                if (valid) {
+                    field.addClass('is-valid');
+                } else {
+                    field.addClass('is-invalid');
+                }
+
+                return valid;
+            }
+
+            form.on('input change', 'input, textarea', function () {
+                validateField($(this));
+            });
+
+            form.on('submit', function (event) {
+                event.preventDefault();
+                successBox.addClass('d-none');
+
+                let isValid = true;
+                form.find('input, textarea').each(function () {
+                    if (!validateField($(this))) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    successBox.removeClass('d-none');
+                    form[0].reset();
+                    form.find('input, textarea').removeClass('is-valid is-invalid');
+                }
+            });
+        });
+    </script>
+}
